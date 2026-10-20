@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>AI Quiz Generator app</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+
+  </head>
+  <body>
+    <!--main container-->
+
+      <!-- main container -->
+    <div class="main-container">
+
+        <!-- app header -->
+        <header class="quiz_head">
+
+            <h1 class="quiz_tittle">QuizGenerator</h1>
+            <span class="quiz_eyebrow">Free AI Quiz Generator</span>
+        </header>
+
+        <main class="quiz-body">
+
+            <!-- screen 1 input -->
+            <section class="page" id="screen-input" data-active="true">
+
+                <h2>Start Your Quiz</h2>
+                <p class="hint">Enter Your Gemini API Key</p>
+
+                <form id="quizForm" class="form">
+
+                    <!-- gemini api key and label -->
+                    <label class="field">
+                      <span>GEMINI API KEY</span>
+                      <input type="password" id="apiKeyInput" placeholder="Enter Your API Key" required>
+                    </label>
+                    
+                    <label class="field">
+                        <span>Quiz Topic</span>
+                        <input type="text" id="topicInput" placeholder="e.g., G.K, History, math" required>
+                    </label>
+
+                    <!-- quiz setting -->
+                    <div class="field-row">
+
+                        <label class="field">
+                             <span>Total Questions</span>
+                             
+                             <select id="countInput">
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                             </select>
+                        </label>
+
+                        <label class="field"> 
+                            <span>Difficulty Level</span>
+                            <select id="difficultyInput">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                    <button type="submit" class="btn">Generate now</button>
+                </form>
+
+            </section>
+
+            <!-- screen 2 loading -->
+            <section class="page" id="screen-loading" data-active="false">
+                <div class="stamp-spinner"></div>
+                <h2 id="loadingText">AI is generating questions...</h2>
+                <p class="hint">Please wait, this takes a few seconds</p>
+            </section>
+
+            <!-- third screen -->
+             <section class="page" id="screen-quiz" data-active="false">
+
+                <p class="kicker" id="quizTopicLabel">Topic</p>
+                <p class="progress" id="quizProgress">Question 1 of 5</p>
+
+                <!-- progress bar fillwidth -->
+                 <div class="progress-bar">
+                    <div class="progress-bar_fill" id="progressFill"></div>
+                 </div>
+
+                 <!-- question text filled by script  -->
+                  <h2 id="questionText"></h2>
+
+                 <div class="options" id="optionContainer"></div>
+
+                 <div class="quiz-action">
+                    
+                    <button type="button" class="btn" id="prevBtn">Back</button>
+                    <button type="button" class="btn" id="nextBtn">Continue</button>
+                 </div>
+
+             </section>
+
+             <!-- results screen -->
+             <section class="page" id="screen-result" data-active="false">
+                <p class="kicker" id="resultTopic">Topic</p>
+                <h2>Quiz Performance</h2>
+                <p class="hint" id="resultSummary">You scored 0 of 0</p>
+                <p class="result-score" id="resultScore">0%</p>
+                <div class="result-review" id="resultReview"></div>
+                <button type="button" class="btn" id="playAgainBtn">Restart Quiz</button>
+             </section>
+
+        </main>
+
+    </div>
+  
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
